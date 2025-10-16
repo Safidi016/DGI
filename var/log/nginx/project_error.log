@@ -1,0 +1,6 @@
+2025/07/25 09:00:59 [crit] 29#29: *1 realpath() "/var/www/html/public" failed (2: No such file or directory), client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost"
+2025/07/25 09:01:08 [crit] 29#29: *3 realpath() "/var/www/html/public" failed (2: No such file or directory), client: 172.18.0.1, server: localhost, request: "HEAD / HTTP/1.1", host: "localhost"
+2025/07/25 09:01:32 [crit] 29#29: *5 realpath() "/var/www/html/public" failed (2: No such file or directory), client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost"
+2025/07/25 09:01:32 [crit] 29#29: *5 realpath() "/var/www/html/public" failed (2: No such file or directory), client: 172.18.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2025/07/25 09:01:44 [crit] 29#29: *5 realpath() "/var/www/html/public" failed (2: No such file or directory), client: 172.18.0.1, server: localhost, request: "GET /avis-if HTTP/1.1", host: "localhost"
+2025/07/25 09:01:50 [crit] 29#29: *5 realpath() "/var/www/html/public" failed (2: No such file or directory), client: 172.18.0.1, server: localhost, request: "GET /avis-if HTTP/1.1", host: "localhost"

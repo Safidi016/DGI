@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Direction Générale des Impôts - Madagascar{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" >
+    <link rel="stylesheet" href="{{ asset('css/all.min.css') }}" >
+    <link rel="stylesheet" href="{{ asset('css/default.css') }}" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+{% endblock %}
+
+{% block body %}
+<div class="page-container">
+    <div class="header-container">
+        <div class="logo-container">
+            <img src="{{ asset('images/logoDgi.png') }}" alt="Logo DGI Madagascar" class="logo-img">
+        </div>
+        <h3 class="page-title">Direction Générale des Impôts<br>Impôts Fonciers</h3>
+    </div>
+    
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-file-invoice-dollar"></i>
+            </div>
+            <h3 class="service-title">Consultation d'avis d'imposition</h3>
+            <p class="service-description">
+                Consultez et payez vos avis d'imposition en ligne pour les différents types d'impôts.
+            </p>
+            <a href="{{ path('avis_if_index') }}" class="btn btn-service">
+                Accéder au service <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-calculator"></i>
+            </div>
+            <h3 class="service-title">Simulateurs</h3>
+            <p class="service-description">
+                Estimez vos obligations fiscales grâce à nos outils de simulation en ligne.
+            </p>
+            <a href="" class="btn btn-service">
+                Accéder au service <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-file-alt"></i>
+            </div>
+            <h3 class="service-title">Déclarations en ligne</h3>
+            <p class="service-description">
+                Effectuez vos déclarations fiscales directement depuis notre plateforme sécurisée.
+            </p>
+           <a href="https://e-hetra.impots.mg/" class="btn btn-service" target="_blank">
+                Accéder au service <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+    
+    <div class="news-section">
+        <h2 class="news-title">Actualités et annonces</h2>
+        
+        <div class="news-item">
+            <div class="news-item-date">15 Juin 2023</div>
+            <h4 class="news-item-title">Nouvelle réglementation fiscale 2023</h4>
+            <p>La DGI informe les contribuables des nouvelles mesures fiscales applicables à partir du 1er juillet 2023.</p>
+        </div>
+        
+        <div class="news-item">
+            <div class="news-item-date">1 Juin 2023</div>
+            <h4 class="news-item-title">Mise à jour de la plateforme en ligne</h4>
+            <p>Notre plateforme de services en ligne a été mise à jour avec de nouvelles fonctionnalités pour améliorer votre expérience.</p>
+        </div>
+        
+        <div class="news-item">
+            <div class="news-item-date">20 Mai 2023</div>
+            <h4 class="news-item-title">Campagne de sensibilisation fiscale</h4>
+            <p>La DGI organise une série de séminaires d'information sur les obligations fiscales des entreprises.</p>
+        </div>
+    </div>
+    
+    <div class="quick-links">
+        <h2 class="quick-links-title">Accès rapide</h2>
+        <div class="quick-links-container">
+            <a href="" class="quick-link">
+                <i class="fas fa-envelope me-2"></i>Nous contacter
+            </a>
+            <a href="" class="quick-link">
+                <i class="fas fa-question-circle me-2"></i>FAQ
+            </a>
+            <a href="" class="quick-link">
+                <i class="fas fa-gavel me-2"></i>Réglementation
+            </a>
+            <a href="" class="quick-link">
+                <i class="fas fa-chart-bar me-2"></i>Statistiques
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            // Animation pour les cartes de service
+            $('.service-card').each(function(index) {
+                $(this).css('opacity', 0);
+                $(this).animate({
+                    opacity: 1,
+                    top: 0
+                }, 600, function() {});
+            });
+            
+            // Gestion des liens actifs
+            $('.quick-link').hover(
+                function() {
+                    $(this).addClass('hover');
+                },
+                function() {
+                    $(this).removeClass('hover');
+                }
+            );
+        });
+    </script>
+{% endblock %}

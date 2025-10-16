@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .error-container {
+            max-width: 600px;
+            margin: 5rem auto;
+            padding: 2rem;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-left: 5px solid #e74c3c;
+        }
+        
+        .error-icon {
+            font-size: 4rem;
+            color: #e74c3c;
+            margin-bottom: 1.5rem;
+        }
+        
+        .error-title {
+            color: #e74c3c;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .error-message {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .btn-retour {
+            background: #3498db;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-retour:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(41, 128, 185, 0.3);
+        }
+        
+        .debug-info {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+            font-family: monospace;
+            text-align: left;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            border-left: 3px solid #95a5a6;
+        }
+        
+        @media (max-width: 768px) {
+            .error-container {
+                margin: 2rem auto;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+<div class="error-container">
+    <div class="logo-container">
+        <img src="{{ asset('images/logoDgi.png') }}" alt="Logo DGI" class="logo-img" style="height: 120px;"> <!-- Logo agrandi à 120px -->
+    </div>
+    {# Icône d'erreur (utilise Font Awesome ou un SVG) #}
+    <div class="error-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </svg>
+    </div>
+    
+    <h1 class="error-title">Oups ! Erreur de vérification</h1>
+    
+    <p class="error-message ">
+        {{ error_message }}<br>
+        Veuillez réessayer ou vérifier manuellement votre avis d'imposition.
+    </p>
+    
+    <a href="{{ path('avis_if_index') }}" class="btn-retour">
+        ← Vérifier manuellement mon avis d'imposition
+    </a>
+    
+    {# Section debug visible uniquement en environnement dev #}
+    {% if app.environment == 'dev' and technical_details is defined %}
+        <div class="debug-info">
+            <h4>Détails techniques :</h4>
+            <pre>{{ technical_details }}</pre>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

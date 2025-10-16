@@ -1,0 +1,23 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+avis_if_index:
+    path: /avis-if
+    controller: App\Controller\AvisIfController::index
+    methods: GET
+
+avis_if_search:
+    path: /avis-if/search
+    controller: App\Controller\AvisIfController::search
+    methods: POST
+
+
+# config/routes.yaml
+if_info:
+    path: /if/{token}
+    controller: App\Controller\IfController::index
+
+ 
