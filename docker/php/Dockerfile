@@ -2,7 +2,7 @@
 FROM php:8.2-fpm
 RUN docker-php-ext-install pdo_mysql
 WORKDIR /var/www/html
-CMD ["php-fpm"]
+
 
 # Mise à jour et installation des dépendances système
 RUN apt-get update && apt-get install -y \
@@ -54,3 +54,25 @@ WORKDIR /var/www/html
 COPY --chmod=+x docker/php/startup.sh /usr/local/bin/startup  
 ENTRYPOINT ["startup"]
 CMD ["php-fpm"]
+
+RUN apk add --no-cache \
+libjpeg-turbo-dev \
+libwebp-dev \
+libpng-dev \
+freetype-dev \
+zip \
+libzip-dev \
+icu-dev \
+oniguruma-dev
+
+RUN docker-php-ext-configure gd --with-jpeg --with-webp --with-freetype \
+&& docker-php-ext-install -j$(nproc) \
+pdo_mysql \
+mbstring \
+exif \
+pcntl \
+bcmath \
+gd \
+zip \
+opcache \
+intl
