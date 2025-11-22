@@ -214,14 +214,14 @@ services:
 
   php:
     build:
-      context: ./
+      context:  ./
       dockerfile: docker/php/Dockerfile
     container_name: symfony_php
     restart: unless-stopped
     working_dir: /var/www/html
     volumes:
       - ./:/var/www/html:cached
-      - ./var/log:/var/www/html/var/log
+      - ./var/logs:/var/www/html/var/log
     environment:
       - APP_DEBUG=0
       - APP_ENV=prod
@@ -242,7 +242,7 @@ services:
     volumes:
       - ./:/var/www/html:ro
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ./var/log/nginx:/var/log/nginx
+      - ./var/logs/nginx:/var/log/nginx
       - ./ssl:/etc/nginx/ssl
     networks:
       - symfony_network
